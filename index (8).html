@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trusted Living Services | 24-Hour Customized Care</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  :root {
+    --cream: #FAF7F2;
+    --warm-white: #FFFCF8;
+    --sand: #E8DDD0;
+    --sienna: #C17D5A;
+    --sienna-dark: #A36644;
+    --sienna-light: #E4A882;
+    --charcoal: #2C2824;
+    --warm-gray: #6B635C;
+    --light-gray: #B5AFA9;
+    --accent-gold: #D4A84B;
+    --section-gap: 100px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250, 247, 242, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--sand);
+    padding: 0 48px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: box-shadow 0.3s;
+  }
+
+  nav.scrolled { box-shadow: 0 4px 32px rgba(44,40,36,0.08); }
+
+  .nav-logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+  .nav-logo-top {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--charcoal);
+    letter-spacing: 0.01em;
+  }
+  .nav-logo-sub {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sienna);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--warm-gray);
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 0;
+    width: 0; height: 1.5px;
+    background: var(--sienna);
+    transition: width 0.25s;
+  }
+  .nav-links a:hover { color: var(--charcoal); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta {
+    background: var(--sienna) !important;
+    color: #fff !important;
+    padding: 10px 22px !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    transition: background 0.2s, transform 0.15s !important;
+    letter-spacing: 0.02em !important;
+  }
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover { background: var(--sienna-dark) !important; transform: translateY(-1px) !important; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--charcoal);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    padding-top: 72px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--warm-white);
+  }
+
+  .hero-bg-shape {
+    position: absolute;
+    right: -80px; top: 50%;
+    transform: translateY(-50%);
+    width: 55vw;
+    height: 80vh;
+    background: linear-gradient(135deg, #F5EDE3 0%, #EDD9C8 60%, #E4C9B0 100%);
+    border-radius: 40px 0 0 40px;
+    z-index: 0;
+  }
+
+  .hero-dot-grid {
+    position: absolute;
+    right: 42vw; top: 15%;
+    width: 120px; height: 120px;
+    background-image: radial-gradient(circle, var(--sand) 1.5px, transparent 1.5px);
+    background-size: 14px 14px;
+    opacity: 0.7;
+    z-index: 1;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
+    width: 100%;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(193,125,90,0.12);
+    color: var(--sienna);
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 7px 14px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--sienna);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+
+  .hero-h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 4.5vw, 58px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--charcoal);
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  .hero-h1 em {
+    font-style: italic;
+    color: var(--sienna);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--warm-gray);
+    max-width: 480px;
+    line-height: 1.75;
+    margin-bottom: 40px;
+    font-weight: 400;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--sienna);
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 16px 32px;
+    border-radius: 8px;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 6px 24px rgba(193,125,90,0.35);
+  }
+  .btn-primary:hover {
+    background: var(--sienna-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 32px rgba(193,125,90,0.45);
+  }
+  .btn-primary svg { transition: transform 0.2s; }
+  .btn-primary:hover svg { transform: translateX(4px); }
+
+  .hero-phone {
+    font-size: 14px;
+    color: var(--warm-gray);
+    font-weight: 500;
+  }
+  .hero-phone a {
+    color: var(--charcoal);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .hero-phone a:hover { color: var(--sienna); }
+
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .hero-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 22px 26px;
+    box-shadow: 0 4px 24px rgba(44,40,36,0.08);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    animation: floatCard 4s ease-in-out infinite;
+  }
+  .hero-card:nth-child(2) { animation-delay: 1s; margin-left: 32px; }
+  .hero-card:nth-child(3) { animation-delay: 2s; }
+  @keyframes floatCard {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .hero-card-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .ic-sienna { background: rgba(193,125,90,0.15); }
+  .ic-gold { background: rgba(212,168,75,0.15); }
+  .ic-warm { background: rgba(181,175,169,0.2); }
+  .hero-card-text strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 2px;
+  }
+  .hero-card-text span {
+    font-size: 12.5px;
+    color: var(--warm-gray);
+  }
+
+  /* ── SECTION COMMON ── */
+  .section {
+    padding: var(--section-gap) 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .full-section {
+    padding: var(--section-gap) 48px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sienna);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::before {
+    content: '';
+    width: 28px; height: 2px;
+    background: var(--sienna);
+    border-radius: 2px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 700;
+    color: var(--charcoal);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  /* ── SERVICES ── */
+  #services-provided {
+    background: var(--warm-white);
+    padding: var(--section-gap) 0;
+  }
+
+  .services-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  .services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 56px;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .services-header-left { max-width: 480px; }
+  .services-desc {
+    font-size: 16px;
+    color: var(--warm-gray);
+    max-width: 340px;
+    line-height: 1.7;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .service-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 36px 32px;
+    box-shadow: 0 2px 16px rgba(44,40,36,0.06);
+    border: 1px solid var(--sand);
+    transition: transform 0.25s, box-shadow 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--sienna), var(--sienna-light));
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(44,40,36,0.12);
+  }
+  .service-card:hover::before { opacity: 1; }
+
+  .service-icon {
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    background: rgba(193,125,90,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+    margin-bottom: 22px;
+  }
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .service-card p {
+    font-size: 14.5px;
+    color: var(--warm-gray);
+    line-height: 1.75;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--charcoal);
+    padding: var(--section-gap) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-bg-circle {
+    position: absolute;
+    right: -100px; top: -100px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: rgba(193,125,90,0.08);
+    pointer-events: none;
+  }
+  .about-bg-circle2 {
+    position: absolute;
+    left: -60px; bottom: -80px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(212,168,75,0.06);
+    pointer-events: none;
+  }
+  .about-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .about-inner .section-label { color: var(--sienna-light); }
+  .about-inner .section-label::before { background: var(--sienna-light); }
+  .about-inner .section-title { color: #fff; }
+  .about-text {
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.85;
+    margin-top: 20px;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 28px 24px;
+    transition: background 0.2s;
+  }
+  .stat-card:hover { background: rgba(255,255,255,0.1); }
+  .stat-card .stat-icon {
+    font-size: 28px;
+    margin-bottom: 14px;
+  }
+  .stat-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .stat-card p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+  }
+  .waiver-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .waiver-tag {
+    background: rgba(193,125,90,0.2);
+    color: var(--sienna-light);
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1px solid rgba(193,125,90,0.3);
+  }
+
+  /* ── PROGRAM ── */
+  #program {
+    background: var(--cream);
+  }
+  .program-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .program-visual {
+    background: linear-gradient(145deg, #F0E4D8 0%, #E8D4C0 100%);
+    border-radius: 24px;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .program-visual::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; right: -30px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(193,125,90,0.2);
+    pointer-events: none;
+  }
+  .program-visual h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 24px;
+  }
+  .program-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .program-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14.5px;
+    color: var(--warm-gray);
+    line-height: 1.6;
+  }
+  .program-features li::before {
+    content: '✓';
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--sienna);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 1px;
+  }
+  .program-text { font-size: 16px; color: var(--warm-gray); line-height: 1.8; margin-top: 20px; }
+
+  /* ── LOCATIONS ── */
+  #locations {
+    background: var(--warm-white);
+    padding: var(--section-gap) 0;
+  }
+  .locations-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+  .locations-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .locations-header .section-label {
+    justify-content: center;
+  }
+  .locations-header .section-label::before { display: none; }
+  .locations-header .section-label::after {
+    content: '';
+    width: 28px; height: 2px;
+    background: var(--sienna);
+    border-radius: 2px;
+  }
+
+  .locations-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .location-card {
+    background: #fff;
+    border: 1px solid var(--sand);
+    border-radius: 18px;
+    padding: 36px 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 2px 12px rgba(44,40,36,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .location-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 36px rgba(44,40,36,0.1);
+  }
+  .location-pin {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    background: rgba(193,125,90,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+  .location-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 4px;
+  }
+  .location-card span {
+    font-size: 13px;
+    color: var(--warm-gray);
+  }
+
+  /* ── REFERRAL ── */
+  #referral-form {
+    background: var(--cream);
+  }
+  .referral-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .referral-left { padding-top: 8px; }
+  .referral-left .section-title { margin-bottom: 16px; }
+  .referral-desc {
+    font-size: 15.5px;
+    color: var(--warm-gray);
+    line-height: 1.8;
+    margin-bottom: 32px;
+  }
+  .contact-info { display: flex; flex-direction: column; gap: 16px; }
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 14.5px;
+    color: var(--warm-gray);
+  }
+  .contact-row a { color: var(--charcoal); font-weight: 600; text-decoration: none; }
+  .contact-row a:hover { color: var(--sienna); }
+  .contact-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: rgba(193,125,90,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .referral-embed-wrap {
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 8px 48px rgba(44,40,36,0.1);
+    overflow: hidden;
+    border: 1px solid var(--sand);
+  }
+  .embed-header {
+    background: linear-gradient(135deg, var(--sienna) 0%, #A36644 100%);
+    padding: 24px 32px;
+    color: #fff;
+  }
+  .embed-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .embed-header p { font-size: 13.5px; opacity: 0.85; }
+  .embed-frame {
+    width: 100%;
+    height: 700px;
+    border: none;
+    display: block;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--charcoal);
+    padding: 56px 48px 32px;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 60px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 28px;
+  }
+  .footer-brand .nav-logo-top { font-size: 20px; color: #fff; }
+  .footer-brand p {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.75;
+    margin-top: 12px;
+    max-width: 280px;
+  }
+  .footer-col h4 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 18px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul a {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-col ul a:hover { color: var(--sienna-light); }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-bottom p {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: var(--warm-white); border-bottom: 1px solid var(--sand); padding: 20px 24px 28px; gap: 18px; box-shadow: 0 8px 24px rgba(44,40,36,0.1); }
+    .nav-links.open { display: flex; }
+    .hamburger { display: flex; }
+
+    .hero-inner { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
+    .hero-bg-shape { display: none; }
+    .hero-visual { display: none; }
+
+    .section { padding: 60px 24px; }
+    .full-section { padding: 60px 24px; }
+
+    .services-inner { padding: 0 24px; }
+    .services-header { flex-direction: column; align-items: flex-start; margin-bottom: 36px; }
+    .services-grid { grid-template-columns: 1fr; }
+
+    .about-inner { grid-template-columns: 1fr; padding: 0 24px; gap: 48px; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
+
+    .program-inner { grid-template-columns: 1fr; gap: 40px; }
+
+    .locations-inner { padding: 0 24px; }
+    .locations-grid { grid-template-columns: 1fr; max-width: 100%; }
+
+    .referral-inner { grid-template-columns: 1fr; gap: 48px; }
+    .embed-frame { height: 580px; }
+
+    .footer-top { grid-template-columns: 1fr; gap: 32px; padding: 0 0 32px; }
+    footer { padding: 48px 24px 28px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+
+    .form-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <span class="nav-logo-top">Trusted Living Services</span>
+    <span class="nav-logo-sub">Care &amp; Assisted Living</span>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#services-provided">Services Provided</a></li>
+    <li><a href="#program">Program</a></li>
+    <li><a href="#locations">Locations</a></li>
+    <li><a href="https://forms.formhippo.com/OL4C5Q1/TLS" target="_blank" class="nav-cta">Referral Form</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg-shape"></div>
+  <div class="hero-dot-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">24-Hour Customized Care</div>
+      <h1 class="hero-h1">Transforming Lives with<br><em>Tailored</em> 24-Hour Care</h1>
+      <p class="hero-sub">At Trusted Living Services, we specialize in providing 24-hour customized and assisted living options designed to meet the unique needs of each individual.</p>
+      <div class="hero-actions">
+        <a href="https://forms.formhippo.com/OL4C5Q1/TLS" target="_blank" class="btn-primary">
+          Refer Someone Today
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <div class="hero-phone">
+          Call us: <a href="tel:6125172140">(612) 517-2140</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-icon ic-sienna">🏡</div>
+        <div class="hero-card-text">
+          <strong>Residential Living</strong>
+          <span>Comfortable, home-like settings</span>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon ic-gold">💊</div>
+        <div class="hero-card-text">
+          <strong>Medication Management</strong>
+          <span>Safe, accurate scheduling</span>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon ic-warm">🤝</div>
+        <div class="hero-card-text">
+          <strong>CADI, BI, DD &amp; Elderly</strong>
+          <span>Waiver-supported care plans</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services-provided">
+  <div class="services-inner">
+    <div class="services-header">
+      <div class="services-header-left">
+        <div class="section-label">What We Offer</div>
+        <h2 class="section-title">Features of Our<br>CL/AL Program</h2>
+      </div>
+      <p class="services-desc">Our programs are built around dignity, independence, and compassionate professional support at every stage of care.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🛁</div>
+        <h3>Personal Care Assistance</h3>
+        <p>We assist with daily activities such as bathing, dressing, and grooming — always ensuring the highest standard of dignity and respect for each individual.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💊</div>
+        <h3>Medication Assistance</h3>
+        <p>Trained professionals carefully manage medication schedules to ensure every dose is administered accurately and safely, supporting overall health and wellness.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏠</div>
+        <h3>Tailored Care Settings</h3>
+        <p>Our smaller residential settings provide highly personalized care, thoughtfully balancing individual independence with the right level of professional support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-bg-circle"></div>
+  <div class="about-bg-circle2"></div>
+  <div class="about-inner">
+    <div>
+      <div class="section-label">Who We Serve</div>
+      <h2 class="section-title">CADI, BI, DD<br>&amp; Elderly Care</h2>
+      <p class="about-text">At Trusted Living Services, our mission is to simplify the complexities of care by providing comprehensive residential and in-home support. We assist individuals utilizing CADI, Brain Injury (BI), Developmental Disabilities (DD), and Elderly Waivers.</p>
+      <div class="waiver-tags">
+        <span class="waiver-tag">CADI Waiver</span>
+        <span class="waiver-tag">Brain Injury (BI)</span>
+        <span class="waiver-tag">Developmental Disabilities (DD)</span>
+        <span class="waiver-tag">Elderly Waiver</span>
+      </div>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-icon">🕐</div>
+        <h4>24/7</h4>
+        <p>Round-the-clock care and support available</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🏡</div>
+        <h4>Home-Like</h4>
+        <p>Residential settings that feel like home</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">👤</div>
+        <h4>Person-First</h4>
+        <p>Care plans designed around each individual</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">✅</div>
+        <h4>Waiver-Ready</h4>
+        <p>Experienced in all major MN waiver types</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section id="program" class="section">
+  <div class="program-inner">
+    <div class="program-visual">
+      <h3>Our Living Program Includes</h3>
+      <ul class="program-features">
+        <li>24-hour on-site support and supervision</li>
+        <li>Individualized care planning and goal setting</li>
+        <li>Comfortable residential home environments</li>
+        <li>Community integration and daily activities</li>
+        <li>Transportation assistance and coordination</li>
+        <li>Family communication and support services</li>
+        <li>Skilled staff trained in disability care</li>
+      </ul>
+    </div>
+    <div>
+      <div class="section-label">Our Program</div>
+      <h2 class="section-title">Customized &amp; Assisted Living Placements</h2>
+      <p class="program-text">We offer 24-hour customized living services for adults with physical and/or mental disabilities in comfortable residential settings designed to prioritize well-being. Our dedicated team works alongside each resident and their family to create a care plan that honors their unique needs, preferences, and goals — ensuring every person feels truly at home.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section id="locations">
+  <div class="locations-inner">
+    <div class="locations-header">
+      <div class="section-label">Where We Are</div>
+      <h2 class="section-title">Our Locations</h2>
+    </div>
+    <div class="locations-grid">
+      <div class="location-card">
+        <div class="location-pin">📍</div>
+        <div>
+          <h3>Brooklyn Park</h3>
+          <span>Minnesota</span>
+        </div>
+      </div>
+      <div class="location-card">
+        <div class="location-pin">📍</div>
+        <div>
+          <h3>Brooklyn Center</h3>
+          <span>Minnesota</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERRAL / CONTACT -->
+<section id="referral-form" class="section">
+  <div class="referral-inner">
+    <div class="referral-left">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Make a Referral</h2>
+      <p class="referral-desc">Ready to connect someone with the care they deserve? Fill out the form or reach out directly. Our team responds promptly to all referral inquiries.</p>
+      <div class="contact-info">
+        <div class="contact-row">
+          <div class="contact-icon">📞</div>
+          <span>Call us at <a href="tel:6125172140">(612) 517-2140</a></span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">✉️</div>
+          <span>Email <a href="mailto:referrals@trustedlivingservices.com">referrals@trustedlivingservices.com</a></span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">🕐</div>
+          <span>Available 24/7 for urgent care needs</span>
+        </div>
+      </div>
+    </div>
+    <div class="referral-embed-wrap">
+      <div class="embed-header">
+        <h3>Referral Form</h3>
+        <p>Complete the form below — our care team will follow up within 24 hours.</p>
+      </div>
+      <iframe
+        class="embed-frame"
+        src="https://forms.formhippo.com/OL4C5Q1/TLS"
+        title="Trusted Living Services Referral Form"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <span class="nav-logo-top" style="color:#fff;">Trusted Living Services</span>
+          <span class="nav-logo-sub">Care &amp; Assisted Living</span>
+        </div>
+        <p>Providing 24-hour customized and assisted living options designed around the unique needs of every individual we serve.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services-provided">Services Provided</a></li>
+          <li><a href="#program">Program</a></li>
+          <li><a href="#locations">Locations</a></li>
+          <li><a href="https://forms.formhippo.com/OL4C5Q1/TLS" target="_blank">Referral Form</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:6125172140">(612) 517-2140</a></li>
+          <li><a href="mailto:referrals@trustedlivingservices.com" style="font-size:12px;">referrals@trustedlivingservices.com</a></li>
+          <li><a href="#">Brooklyn Park, MN</a></li>
+          <li><a href="#">Brooklyn Center, MN</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Trusted Living Services. All rights reserved.</p>
+      <p>Serving Brooklyn Park &amp; Brooklyn Center, Minnesota</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Sticky nav shadow
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.service-card, .stat-card, .location-card, .hero-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
